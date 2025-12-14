@@ -1,0 +1,25 @@
+# Конфигурация мониторинга устройства
+device:
+  interface: "udp"  # или "serial"
+  host: "127.0.0.1"
+  port: 10000
+  serial_port: "ttyACM0"
+  baudrate: 115200
+  timeout: 5.0
+
+monitoring:
+  period: 2.0  # секунды между запросами
+  log_file: "/var/log/device_monitor/readings.log"
+  max_log_size_mb: 10
+  max_log_files: 5
+
+logging:
+  level: "INFO"
+  file: "/var/log/device_monitor/monitor.log"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+service:
+  name: "device-monitor"
+  description: "Device monitoring service"
+  user: "nobody"
+  restart_on_failure: true
