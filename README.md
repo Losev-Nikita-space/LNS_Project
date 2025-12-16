@@ -37,21 +37,21 @@ IP_PORT: 10000
 
 ```
 LNS_project/
-├── config/
+├── config/                  Конфигурация
 │   └── config.yaml
-├── device/
-│   ├── __init__.py
-│   ├── device_client.py
-│   ├── udp_driver.py
-│   ├── serial_driver.py
-│   └── exceptions.py
-├── scripts/
-│   ├── device_monitor.py
-│   ├── service_install.sh
-│   └── service_control.sh
-├── udp_server.py
-├── requirements.txt
-├── setup.py
-└── device_monitor.log
+├── device/                  Основной модуль для работы с устройством
+│   ├── __init__.py          Делает каталог device Python-пакетом
+│   ├── device_client.py     Клиент
+│   ├── udp_driver.py        Драйвер для общения по UDP
+│   ├── serial_driver.py     Драйвер для Serial-интерфейса
+│   └── exceptions.py        Исключения для обработки ошибок
+├── scripts/                 Утилиты для развертывания и запуска
+│   ├── device_monitor.py    Скрипт мониторинга
+│   ├── service_install.sh   Автоматическая установка сервиса на Linux
+│   └── service_control.sh   Скрипт для администрирования сервиса
+├── udp_server.py            Эмулятор устройства для тестирования
+├── requirements.txt         Зависимости Python
+├── setup.py                 Установка пакета как системного приложения
+└── device_monitor.log       Лог работы скрипта мониторинга
 ```
  ------------------------------------------------
