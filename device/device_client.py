@@ -110,7 +110,7 @@ class DeviceClient:
         
         logger.info(f"Инициализирован DeviceClient: {config.interface.value}")
         
-        # Создаем драйвер в зависимости от типа интерфейса
+        # Создаем драйвер в зависимости от типа интерфейса "UDP" или "serial"
         if config.interface in [InterfaceType.UDP]:
             self.driver = UDPDriver(
                 host=config.host,

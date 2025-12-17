@@ -21,8 +21,7 @@ class UDPDriver:
     - Запрос: "GET_S" → Ответ: "S_DSA123"
     """
     
-    def __init__(self, host: str = "127.0.0.1", port: int = 10000, 
-                 timeout: float = 5.0):
+    def __init__(self, host: str = "127.0.0.1", port: int = 10000, timeout: float = 5.0):
         """
         Инициализация UDP драйвера
         

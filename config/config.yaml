@@ -1,7 +1,7 @@
 # Конфигурация мониторинга устройства
 device:
-  interface: "udp"  # или "serial"
-  host: "127.0.0.1"
+  interface: "udp"  # "udp" по умолчанию стоит, можно "переключить" на "serial"
+  host: "127.0.0.1" 
   port: 10000
   serial_port: "ttyACM0"
   baudrate: 115200
@@ -23,3 +23,4 @@ service:
   description: "Device monitoring service"
   user: "nobody"
   restart_on_failure: true
+  #можно разделить конфигурацию на секцию с "udp" или "serial"

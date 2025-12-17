@@ -6,7 +6,15 @@ setup(
     version="1.0.0",
     description="Device monitoring service for UDP/Serial devices",
     author="Nikita_Losev",
-    packages=find_packages(),
+    packages=find_packages(include=['device*']),
+    
+    # Включаем остальные файлы
+    package_data={
+        'device': ['*.py'],
+    },
+    
+    # Включаем скрипты
+    scripts=['scripts/device_monitor.py', 'udp_server.py',],
   
     install_requires=[
         'pyserial>=3.5',    
@@ -31,4 +39,5 @@ setup(
         'Programming Language :: Python :: 3.10',
         'Programming Language :: Python :: 3.11',
     ],
+    include_package_data=True,
 )
