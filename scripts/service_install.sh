@@ -35,7 +35,7 @@ cp ../../config/default.yaml "$CONFIG_DIR/config.yaml"
 # 3. Создание виртуального окружения и установка зависимостей
 echo "Настройка Python окружения..."
 cd "$INSTALL_DIR"
-python3 -m venv venv
+python3.10 -m venv venv
 source venv/bin/activate
 pip install pyyaml
 

@@ -156,7 +156,7 @@ class DeviceClient:
             DeviceReading: Объект с показаниями
             
         Raises:
-            DeviceError: Если произошла ошибка
+            DeviceError: Если завершилось с любой ошибкой
         """
         if not self.is_connected:
             raise ConnectionError("Устройство не подключено")
@@ -180,17 +180,9 @@ class DeviceClient:
             return reading
             
         except Exception as e:
-            # В случае ошибки возвращаем объект с ошибкой
-            logger.error(f"Ошибка при получении показаний: {e}")
-            
-            return DeviceReading(
-                timestamp=datetime.now().isoformat(),
-                voltage="V_ERROR",
-                current="A_ERROR",
-                serial="S_ERROR",
-                status="ERROR",
-                error=str(e)
-            )
+            # КРИТИЧЕСКОЕ ИЗМЕНЕНИЕ: ВСЕГДА выбрасываем исключение при ошибке
+            logger.error(f"КРИТИЧЕСКАЯ ОШИБКА устройства: {e}")
+            raise DeviceError(f"Ошибка устройства: {e}")
     
     def get_voltage(self) -> str:
         """Получить только напряжение"""

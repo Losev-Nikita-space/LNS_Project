@@ -264,14 +264,9 @@ class DeviceMonitor:
                         )
                         
                 except ConnectionError as e:
-                    self.logger.error(f"Потеряно соединение: {e}")
-                    
-                    # Пытаемся переподключиться
-                    self.logger.info("Попытка переподключения...")
-                    if not self._setup_device():
-                        self.logger.error("Переподключение не удалось")
-                        time.sleep(5)  # Ждем перед следующей попыткой
-                        continue
+                    self.logger.error(f"КРИТИЧЕСКАЯ ОШИБКА: Потеряно соединение с устройством: {e}")
+                    self.logger.error("Завершение работы согласно требованиям спецификации")
+                    break  # Выходим из цикла while (немедленное завершение)
                         
                 except Exception as e:
                     self.logger.error(f"Ошибка в цикле мониторинга: {e}")

@@ -8,3 +8,6 @@ lockfile>=0.12.2
 # Для тестирования
 pytest>=7.0.0
 pytest-mock>=3.10.0
+
+# Требование версии Python
+python_version >= '3.10'
