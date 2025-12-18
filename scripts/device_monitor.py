@@ -95,7 +95,7 @@ class DeviceMonitor:
             },
             'monitoring': {
                 'period': 2.0,
-                'log_file': 'device_readings.log',
+                'log_file': 'device_data.json',
                 'max_log_size_mb': 10,
                 'max_log_files': 5
             },
@@ -189,12 +189,29 @@ class DeviceMonitor:
                 if file_size_mb > log_config.get('max_log_size_mb', 10):
                     self._rotate_log_file(log_file, log_config.get('max_log_files', 5))
             
-            # Записываем в файл
-            with open(log_file, 'a', encoding='utf-8') as f:
-                json.dump(reading, f, ensure_ascii=False)
-                f.write('\n')
+            # Читаем существующие данные
+            data = []
+            if os.path.exists(log_file):
+                try:
+                    with open(log_file, 'r', encoding='utf-8') as f:
+                        content = f.read().strip()
+                        if content:
+                            data = json.loads(content)
+                            if not isinstance(data, list):
+                                # Если файл не список, создаём новый
+                                data = [data] if content else []
+                except json.JSONDecodeError:
+                    # Если JSON сломан, начинаем заново
+                    data = []
             
-            self.logger.debug(f"Записаны показания: {reading}")
+            # Добавляем новую запись
+            data.append(reading)
+            
+            # Записываем ВЕСЬ список обратно
+            with open(log_file, 'w', encoding='utf-8') as f:
+                json.dump(data, f, indent=2, ensure_ascii=False)
+            
+            self.logger.debug(f"Записаны показания в {log_file}, всего записей: {len(data)}")
             
         except Exception as e:
             self.logger.error(f"Ошибка записи в лог: {e}")

@@ -30,7 +30,7 @@ chown -R $USER:$GROUP "$LOG_DIR"
 echo "Копирование файлов..."
 cp -r ../device "$INSTALL_DIR/"
 cp device_monitor.py "$INSTALL_DIR/"
-cp ../../config/default.yaml "$CONFIG_DIR/config.yaml"
+cp ../../config/config.yaml "$CONFIG_DIR/config.yaml"
 
 # 3. Создание виртуального окружения и установка зависимостей
 echo "Настройка Python окружения..."

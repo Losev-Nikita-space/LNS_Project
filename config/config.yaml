@@ -9,13 +9,13 @@ device:
 
 monitoring:
   period: 2.0  # секунды между запросами
-  log_file: "/var/log/device_monitor/readings.log"
+  log_file: "/var/log/device_monitor/device_data.json""
   max_log_size_mb: 10
   max_log_files: 5
 
 logging:
   level: "INFO"
-  file: "/var/log/device_monitor/monitor.log"
+  file: "/var/log/device_monitor/device_monitor.log"
   format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 
 service:

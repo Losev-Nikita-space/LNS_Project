@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3.10
 """
 Основной класс для работы с устройством
 Может использоваться через import
@@ -256,7 +256,7 @@ def create_device_client(config_dict: Dict[str, Any]) -> DeviceClient:
 
 
 # Экспорт основных классов и функций
-_all__ = [
+__all__ = [
     'DeviceClient',
     'DeviceConfig', 
     'DeviceReading',
