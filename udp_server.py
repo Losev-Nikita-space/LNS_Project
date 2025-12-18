@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3.10
 """
 Простой UDP сервер, эмулирующий устройство LNS.
 Отвечает на команды: GET_V, GET_A, GET_S
