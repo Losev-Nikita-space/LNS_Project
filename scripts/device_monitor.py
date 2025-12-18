@@ -6,6 +6,13 @@
 
 import sys
 import os
+# ========== ПРОВЕРКА ВЕРСИИ PYTHON ==========
+MIN_PYTHON_VERSION = (3, 10)
+if sys.version_info < MIN_PYTHON_VERSION:
+    print(f"Требуется Python {MIN_PYTHON_VERSION[0]}.{MIN_PYTHON_VERSION[1]} или выше")
+    print(f"Текущая версия: {sys.version}")
+    sys.exit(1)
+# ============================================
 import time
 import signal
 import logging
