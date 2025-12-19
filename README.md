@@ -58,6 +58,7 @@ LNS_project/
 ```
  ------------------------------------------------
 -------------------**Быстрый старт программы**---------------------
+```
 **1. Клонирование и подготовка
 bash**
 
@@ -95,6 +96,7 @@ sudo python scripts/device_monitor.py --config config/config.yaml --test
 sudo python scripts/device_monitor.py --config config/config.yaml
 ```
 ---------------**Парсер логов по ключевому слову аналог grep**-------------
+```
 -Расположение: scripts/log_grep.py
 ----------**Пример команд:**
 python3.10 scripts/log_grep.py INFO  #Мониторинг работы сервиса
