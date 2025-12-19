@@ -61,17 +61,17 @@ LNS_project/
 **1. Клонирование и подготовка
 bash**
 
-# 1.1 Клонируйте репозиторий
+ 1.1 Клонируйте репозиторий
 git clone <URL_репозитория>
 cd LNS_Project
 
-# 1.2 Создайте виртуальное окружение
+ 1.2 Создайте виртуальное окружение
 python3.10 -m venv venv
 
-# 1.3 Активируйте окружение
+ 1.3 Активируйте окружение
 source venv/bin/activate
 
-# 1.4 Установите зависимости
+ 1.4 Установите зависимости
 pip install pyyaml pyserial
 
 **2. Запуск тестового режима (без установки сервиса)**
@@ -88,10 +88,10 @@ bash
 
 source venv/bin/activate
 
-# Тестовый запрос (один раз)
+ Тестовый запрос (один раз)
 sudo python scripts/device_monitor.py --config config/config.yaml --test
 
-# Запуск монитора
+ Запуск монитора
 sudo python scripts/device_monitor.py --config config/config.yaml
 ```
 ---------------**Парсер логов по ключевому слову аналог grep**-------------
