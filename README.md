@@ -26,8 +26,8 @@ IP_PORT: 10000
 
 Результаты прислать ссылкой в репозиторий.
 ```
-------------------------------------------------
--------------**Предварительные требования**-----------------
+-----------------------------------------------
+-------------Предварительные требования-----------------
 - Операционная система: Linux (Ubuntu 20.04+)
 - Установленный Python 3.10 
 - Установленный Git
@@ -79,8 +79,10 @@ source venv/bin/activate
  **1.4 Установите зависимости**
 
 pip install pyyaml pyserial
+```
 
 ######**2. Запуск тестового режима (без установки сервиса)**
+```
 
 **_Терминал 1 - Эмулятор устройства:_**
 **bash**
@@ -98,8 +100,10 @@ __sudo python3.10 scripts/device_monitor.py --config config/config.yaml --test__
 
  Запуск монитора
 __sudo python3.10 scripts/device_monitor.py --config config/config.yaml__
+```
 
 ------------------------#####3. Установка сервиса-------------------------
+```
 **bash**
 **Из папки LNS_Project выполните:**
 
@@ -114,8 +118,9 @@ _sudo bash scripts/service_install.sh_
     -Настроит systemd сервис lns_project
 
     -Настроит ротацию логов
-
+```
  ------------------------#####4.Управление сервисом-------------------------
+```
 **Запуск/остановка**
 
 __sudo systemctl start lns_project__
@@ -134,9 +139,11 @@ __sudo bash scripts/service_control.sh stop__     остановка
 __sudo bash scripts/service_control.sh status__   статус
 __sudo bash scripts/service_control.sh logs__     логи в реальном времени
 __sudo bash scripts/service_control.sh test__     тестовый запрос
+```
 ------------------------#####5.Проверка работы системы-------------------------
 **5.1 Проверка сервиса**
 bash
+```
 **Сервис должен быть активен**
 __sudo systemctl status lns_project__
 **✅ Должно быть: Active: active (running)**
