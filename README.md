@@ -64,7 +64,7 @@ bash**
 
  **1.1 Клонируйте репозиторий**
 
-git clone <URL_репозитория>
+git clone git@github.com:Losev-Nikita-space/LNS_Project.git
 cd LNS_Project
 
  **1.2 Создайте виртуальное окружение**
