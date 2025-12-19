@@ -85,7 +85,7 @@ pip install pyyaml pyserial
 **bash**
 
 source venv/bin/activate
-python udp_server.py --host 127.0.0.1 --port 10000
+python3.10 udp_server.py --host 127.0.0.1 --port 10000
 
 **_Терминал 2 - Монитор устройства:_**
 bash
@@ -93,16 +93,26 @@ bash
 source venv/bin/activate
 
  Тестовый запрос (один раз)
-sudo python scripts/device_monitor.py --config config/config.yaml --test
+sudo python3.10 scripts/device_monitor.py --config config/config.yaml --test
 
  Запуск монитора
-sudo python scripts/device_monitor.py --config config/config.yaml
+sudo python3.10 scripts/device_monitor.py --config config/config.yaml
 
 ------------------------#####3. Установка сервиса-------------------------
-```
-# Из папки LNS_Project выполните:
-sudo bash scripts/service_install.sh
-```
+**bash**
+**Из папки LNS_Project выполните:**
+
+_sudo bash scripts/service_install.sh_
+
+**Скрипт автоматически:**
+
+    -Создаст директории /opt/lns_project/, /etc/lns_project/, /var/log/lns_project/
+
+    -Установит зависимости в виртуальное окружение
+
+    -Настроит systemd сервис lns_project
+
+    -Настроит ротацию логов
 ```
 ---------------**Парсер логов по ключевому слову аналог grep**-------------
 ```
