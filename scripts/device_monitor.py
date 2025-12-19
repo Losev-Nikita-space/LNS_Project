@@ -67,8 +67,8 @@ class DeviceMonitor:
         # Пути по умолчанию
         default_paths = [
             config_path,
-            "/etc/device_monitor/config.yaml",
-            str(Path.home() / ".config/device_monitor/config.yaml"),
+            "/etc/lns_project/config.yaml",
+            str(Path.home() / ".config/lns_project/config.yaml"),
             "config/default.yaml",
         ]
         
@@ -335,7 +335,7 @@ def main():
         import daemon
         from daemon.pidfile import TimeoutPIDLockFile
         
-        pid_file = "/var/run/device_monitor.pid"
+        pid_file = "/var/run/lns_project.pid"
         
         context = daemon.DaemonContext(
             pidfile=TimeoutPIDLockFile(pid_file),

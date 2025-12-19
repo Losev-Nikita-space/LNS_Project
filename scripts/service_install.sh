@@ -1,15 +1,19 @@
 #!/bin/bash
-# Скрипт установки сервиса device-monitor для systemd
+# Скрипт установки сервиса lns_project для systemd
 
 set -e
 
 # Конфигурация
-SERVICE_NAME="device-monitor"
-INSTALL_DIR="/opt/device_monitor"
-CONFIG_DIR="/etc/device_monitor"
-LOG_DIR="/var/log/device_monitor"
-USER="nobody"
-GROUP="nogroup"
+SERVICE_NAME="lns_project"
+INSTALL_DIR="/opt/lns_project"
+CONFIG_DIR="/etc/lns_project"
+LOG_DIR="/var/log/lns_project"
+USER="daemon"
+GROUP="daemon"
+
+# Получаем абсолютные пути к проекту
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
 
 # Проверка прав
 if [ "$EUID" -ne 0 ]; then
@@ -28,16 +32,18 @@ chown -R $USER:$GROUP "$LOG_DIR"
 
 # 2. Копирование файлов
 echo "Копирование файлов..."
-cp -r ../device "$INSTALL_DIR/"
-cp device_monitor.py "$INSTALL_DIR/"
-cp ../../config/config.yaml "$CONFIG_DIR/config.yaml"
+echo "Проект находится в: $PROJECT_ROOT"
+
+cp -r "$PROJECT_ROOT/device" "$INSTALL_DIR/"
+cp "$PROJECT_ROOT/scripts/device_monitor.py" "$INSTALL_DIR/"
+cp "$PROJECT_ROOT/config/config.yaml" "$CONFIG_DIR/config.yaml"
 
 # 3. Создание виртуального окружения и установка зависимостей
 echo "Настройка Python окружения..."
 cd "$INSTALL_DIR"
 python3.10 -m venv venv
 source venv/bin/activate
-pip install pyyaml
+pip install pyyaml pyserial
 
 # 4. Создание systemd сервиса
 echo "Создание systemd сервиса..."
@@ -53,7 +59,7 @@ User=$USER
 Group=$GROUP
 WorkingDirectory=$INSTALL_DIR
 Environment="PYTHONPATH=$INSTALL_DIR"
-ExecStart=$INSTALL_DIR/venv/bin/python $INSTALL_DIR/device_monitor.py --config $CONFIG_DIR/config.yaml --daemon
+ExecStart=$INSTALL_DIR/venv/bin/python $INSTALL_DIR/device_monitor.py --config $CONFIG_DIR/config.yaml 
 Restart=always
 RestartSec=10
 StandardOutput=syslog

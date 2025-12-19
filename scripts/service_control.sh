@@ -1,7 +1,7 @@
 #!/bin/bash
-# Управление сервисом device-monitor
+# Управление сервисом lns_project
 
-SERVICE_NAME="device-monitor"
+SERVICE_NAME="lns_project"
 
 case "$1" in
     start)
@@ -27,8 +27,8 @@ case "$1" in
         ;;
     test)
         # Тестовый запуск (без демона)
-        cd /opt/device_monitor
-        ./venv/bin/python device_monitor.py --test --config /etc/device_monitor/config.yaml
+        cd /opt/lns_project
+        ./venv/bin/python device_monitor.py --test --config /etc/lns_project/config.yaml
         ;;
     *)
         echo "Использование: $0 {start|stop|restart|status|logs|enable|disable|test}"

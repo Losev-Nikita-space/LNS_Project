@@ -2,7 +2,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="device-monitor",
+    name="lns_project",
     version="1.0.0",
     description="Device monitoring service for UDP/Serial devices",
     author="Nikita_Losev",
@@ -23,7 +23,7 @@ setup(
     
     entry_points={
         'console_scripts': [
-            'device-monitor=scripts.device_monitor:main',  
+            'lns_project=scripts.device_monitor:main',  
         ],
     },
     

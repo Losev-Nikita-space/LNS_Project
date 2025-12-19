@@ -1,7 +1,7 @@
 # Основные зависимости
 pyyaml>=6.0
 
-# Для systemd сервиса (опционально)
+# Для systemd сервиса
 python-daemon>=2.3.0
 lockfile>=0.12.2
 

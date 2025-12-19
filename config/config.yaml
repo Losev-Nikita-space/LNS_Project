@@ -1,6 +1,6 @@
 # Конфигурация мониторинга устройства
 device:
-  interface: "udp"  # "udp" по умолчанию стоит, можно "переключить" на "serial"
+  interface: "udp"  # "udp", либо "serial"
   host: "127.0.0.1" 
   port: 10000
   serial_port: "ttyACM0"
@@ -9,13 +9,13 @@ device:
 
 monitoring:
   period: 2.0  # секунды между запросами
-  log_file: "/var/log/device_monitor/device_data.json""
+  log_file: "/var/log/lns_project/device_data.json"
   max_log_size_mb: 10
   max_log_files: 5
 
 logging:
   level: "INFO"
-  file: "/var/log/device_monitor/device_monitor.log"
+  file: "/var/log/lns_project/device_monitor.log"
   format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 
 service:
