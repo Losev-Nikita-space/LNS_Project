@@ -1,6 +1,6 @@
 -----------------**ОПИСАНИЕ ЗАДАНИЯ**--------------------
 ```
-Тестовое задание Python
+-Тестовое задание Python
 Устройство работает по serial интерфейсу, либо по UDP. Отвечает на такие команды, как: 
 запрос GET_V, ответ – “V_12V”
 запрос GET_A, ответ – “A_1A”
@@ -20,9 +20,9 @@ IP_PORT: 10000
 
 Скрипт должен быть запущен в виде сервиса на ПК с ОС  Linux
 
-Написать парсер логов из пункта 1. Сделать вывод логов по ключевому слову: скрипт парсит логи и выводит в консоль только те, которые совпали с аргументом вызова парсера (аналог grep).
+-Написать парсер логов из пункта 1. Сделать вывод логов по ключевому слову: скрипт парсит логи и выводит в консоль только те, которые совпали с аргументом вызова парсера (аналог grep).
 
-Сделать сервис мониторинга доступности устройства с привязкой к «Телеграмм» боту. При запросе с бота будет осуществляться запрос на устройство, по ответу которого будет формироваться статусный ответ.
+-Сделать сервис мониторинга доступности устройства с привязкой к «Телеграмм» боту. При запросе с бота будет осуществляться запрос на устройство, по ответу которого будет формироваться статусный ответ.
 
 Результаты прислать ссылкой в репозиторий.
 ```
@@ -50,7 +50,8 @@ LNS_project/
 ├── scripts/                 Утилиты для развертывания и запуска
 │   ├── device_monitor.py    Скрипт мониторинга
 │   ├── service_install.sh   Автоматическая установка сервиса на Linux
-│   └── service_control.sh   Скрипт для администрирования сервиса
+│   ├── service_control.sh   Скрипт для администрирования сервиса
+│   └──
 ├── udp_server.py            Эмулятор устройства для тестирования
 ├── requirements.txt         Зависимости Python
 ├── setup.py                 Установка пакета как системного приложения
@@ -85,7 +86,7 @@ pip install pyyaml pyserial
 **bash**
 
 source venv/bin/activate
-python3.10 udp_server.py --host 127.0.0.1 --port 10000
+__python3.10 udp_server.py --host 127.0.0.1 --port 10000__
 
 **_Терминал 2 - Монитор устройства:_**
 bash
@@ -93,10 +94,10 @@ bash
 source venv/bin/activate
 
  Тестовый запрос (один раз)
-sudo python3.10 scripts/device_monitor.py --config config/config.yaml --test
+__sudo python3.10 scripts/device_monitor.py --config config/config.yaml --test__
 
  Запуск монитора
-sudo python3.10 scripts/device_monitor.py --config config/config.yaml
+__sudo python3.10 scripts/device_monitor.py --config config/config.yaml__
 
 ------------------------#####3. Установка сервиса-------------------------
 **bash**
@@ -113,8 +114,51 @@ _sudo bash scripts/service_install.sh_
     -Настроит systemd сервис lns_project
 
     -Настроит ротацию логов
+
+ ------------------------#####4.Управление сервисом-------------------------
+**Запуск/остановка**
+
+__sudo systemctl start lns_project__
+__sudo systemctl stop lns_project__
+
+**Проверка статуса**
+
+__sudo systemctl status lns_project__
+
+**Просмотр логов**
+__sudo journalctl -u lns_project -f__
+**Скрипты управления**
+
+__sudo bash scripts/service_control.sh start__    запуск
+__sudo bash scripts/service_control.sh stop__     остановка
+__sudo bash scripts/service_control.sh status__   статус
+__sudo bash scripts/service_control.sh logs__     логи в реальном времени
+__sudo bash scripts/service_control.sh test__     тестовый запрос
+------------------------#####5.Проверка работы системы-------------------------
+**5.1 Проверка сервиса**
+bash
+**Сервис должен быть активен**
+__sudo systemctl status lns_project__
+**✅ Должно быть: Active: active (running)**
+**5.2 Проверка логов**
+bash
+
+**Логи systemd**
+__sudo journalctl -u lns_project -n 10__
+
+**Логи приложения**
+__ls -la /var/log/lns_project/__
+__tail -f /var/log/lns_project/device_data.json__
+**5.3 Проверка данных**
+bash
+
+**Тестовый запрос, возвращает JSON**
+__sudo bash scripts/service_control.sh test__
+
+
 ```
----------------**Парсер логов по ключевому слову аналог grep**-------------
+
+
 ```
 -Расположение: scripts/log_grep.py
 ----------**Пример команд:**
