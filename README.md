@@ -151,7 +151,7 @@ bash
 
 Сервис должен быть активен
 sudo systemctl status lns_project
-✅ Должно быть: Active: active (running)
+Должно быть: Active: active (running)
 ```
 5.2 Проверка логов
 bash
