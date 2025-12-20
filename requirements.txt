@@ -13,4 +13,4 @@ pytest-mock>=3.10.0
 python_version >= '3.10'
 
 # Telegram бот
-python-telegram-bot>=20.0
+python-telegram-bot==20.0

@@ -1,14 +1,15 @@
-#!/usr/bin/env python3.10
+#!/usr/bin/env python3
 """
-Конфигурация Telegram бота
-
+Конфигурация Telegram бота для LNS Project
 """
 
 # ТОКЕН от @BotFather
 BOT_TOKEN = "8023941051:AAEHLxF2M3H97ApfhxKVNSPL8kVlPvsVbQc"
 
-# Ваш Telegram ID (узнать у @userinfobot)
-ADMIN_IDS = [368094031]  # Может быть несколько: [123456789, 987654321]
+# ID администратора (получить у @userinfobot)
+ADMIN_ID = 368094031
 
-# Путь к конфигу устройства (такой же как у основного сервиса)
-DEVICE_CONFIG_PATH = "/etc/lns_project/config.yaml"
+# Настройки устройства 
+DEVICE_HOST = "127.0.0.1"  # IP устройства
+DEVICE_PORT = 10000        # Порт устройства
+TIMEOUT = 5.0              # Таймаут в секундах
