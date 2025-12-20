@@ -237,7 +237,6 @@ python3.10 telegram_bot/bot.py
 
     /status
 
-    /info
 ```
 - Ожидаемый результат на команду  /status:
   
