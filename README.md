@@ -27,7 +27,7 @@ IP_PORT: 10000
 Результаты прислать ссылкой в репозиторий.
 ```
 -----------------------------------------------
--------------__Предварительные требования__-----------------
+_____________Предварительные требования_____________
 - Операционная система: Linux (Ubuntu 20.04+)
 - Установленный Python 3.10 
 - Установленный Git
@@ -61,10 +61,10 @@ ____________________________________________________________________________
 __________________________Быстрый старт программы__________________________
 ____________________________________________________________________________
 ```
-######__1. Клонирование и подготовка__
-bash__
+1. Клонирование и подготовка
+bash
 
- __1.1 Клонируйте репозиторий__
+ 1.1 Клонируйте репозиторий
 
 git clone git@github.com:Losev-Nikita-space/LNS_Project.git
 cd LNS_Project
@@ -82,10 +82,10 @@ source venv/bin/activate
 pip install pyyaml pyserial
 ```
 
-__________2. Запуск тестового режима (без установки сервиса)_____________
+__________2. Запуск тестового режима (без установки сервиса)__________
 ```
 
-___Терминал 1 - Эмулятор устройства:
+Терминал 1 - Эмулятор устройства:
 bash
 
 source venv/bin/activate
@@ -103,7 +103,7 @@ sudo python3.10 scripts/device_monitor.py --config config/config.yaml --test
 sudo python3.10 scripts/device_monitor.py --config config/config.yaml
 ```
 
-________________________3. Установка сервиса______________________________
+________________________3. Установка сервиса________________________
 ```
 bash
 Из папки LNS_Project выполните:
@@ -120,9 +120,9 @@ sudo bash scripts/service_install.sh
 
     -Настроит ротацию логов
 ```
-____________________________4.Управление сервисом_____________________________
+____________________________4.Управление сервисом____________________________
 ```
-__Запуск/остановка__
+Запуск/остановка
 
 sudo systemctl start lns_project
 sudo systemctl stop lns_project
@@ -132,17 +132,19 @@ sudo systemctl stop lns_project
 sudo systemctl status lns_project
 
 Просмотр логов
+
 sudo journalctl -u lns_project -f
+
 Скрипты управления
 
-sudo bash scripts/service_control.sh start   запуск
-sudo bash scripts/service_control.sh stop    остановка
-sudo bash scripts/service_control.sh status  статус
-sudo bash scripts/service_control.sh logs    логи в реальном времени
-sudo bash scripts/service_control.sh test    тестовый запрос
+sudo bash scripts/service_control.sh start  # запуск
+sudo bash scripts/service_control.sh stop   # остановка
+sudo bash scripts/service_control.sh status # статус
+sudo bash scripts/service_control.sh logs   # логи в реальном времени
+sudo bash scripts/service_control.sh test   # тестовый запрос
 ```
-____________________________5.Проверка работы системы_____________________________
-```
+____________________________5.Проверка работы системы____________________________
+
 5.1 Проверка сервиса
 ```
 bash
@@ -152,15 +154,15 @@ sudo systemctl status lns_project
 ✅ Должно быть: Active: active (running)
 ```
 5.2 Проверка логов
-```
 bash
+
 ```
 Логи systemd
-```
+
 sudo journalctl -u lns_project -n 10
-```
+
 Логи приложения
-```_
+
 ls -la /var/log/lns_project/
 tail -f /var/log/lns_project/device_data.json
 ```
@@ -173,17 +175,16 @@ bash
 sudo bash scripts/service_control.sh test
 ```
 
+________________6.Парсер логов (log_grep.py)________________
 
+Расположение: scripts/log_grep.py
 ```
--Расположение: scripts/log_grep.py
-```
-__Пример команд:__
-```
-```
-* python3.10 scripts/log_grep.py INFO  Мониторинг работы сервиса
-* python3.10 scripts/log_grep.py ERROR Проверка на наличие ошибок
-* python3.10 scripts/log_grep.py V_12V Анализ данных с устройства
-* python3.10 scripts/log_grep.py "22:39" Поиск конкретных временных меток
+Пример команд:
+
+* python3.10 scripts/log_grep.py INFO       #  Мониторинг работы сервиса
+* python3.10 scripts/log_grep.py ERROR      #  Проверка на наличие ошибок
+* python3.10 scripts/log_grep.py V_12V      #  Анализ данных с устройства
+* python3.10 scripts/log_grep.py "22:39"    #  Поиск конкретных временных меток
 ```
 -------------------------------------------------------------------------
 ```
