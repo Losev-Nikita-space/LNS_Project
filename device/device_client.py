@@ -180,7 +180,7 @@ class DeviceClient:
             return reading
             
         except Exception as e:
-            # КРИТИЧЕСКОЕ ИЗМЕНЕНИЕ: ВСЕГДА выбрасываем исключение при ошибке
+            # ВСЕГДА выбрасываем исключение при ошибке
             logger.error(f"КРИТИЧЕСКАЯ ОШИБКА устройства: {e}")
             raise DeviceError(f"Ошибка устройства: {e}")
     

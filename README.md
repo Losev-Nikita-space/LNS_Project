@@ -91,7 +91,7 @@ bash
 source venv/bin/activate
 python3.10 udp_server.py --host 127.0.0.1 --port 10000
 
-ерминал 2 - Монитор устройства:
+Терминал 2 - Монитор устройства:
 bash
 
 source venv/bin/activate
