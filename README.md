@@ -1,6 +1,6 @@
 -----------------__ОПИСАНИЕ ЗАДАНИЯ__--------------------
 ```
--Тестовое задание Python
+* Тестовое задание Python
 Устройство работает по serial интерфейсу, либо по UDP. Отвечает на такие команды, как: 
 запрос GET_V, ответ – “V_12V”
 запрос GET_A, ответ – “A_1A”
@@ -20,9 +20,9 @@ IP_PORT: 10000
 
 Скрипт должен быть запущен в виде сервиса на ПК с ОС  Linux
 
--Написать парсер логов из пункта 1. Сделать вывод логов по ключевому слову: скрипт парсит логи и выводит в консоль только те, которые совпали с аргументом вызова парсера (аналог grep).
+* Написать парсер логов из пункта 1. Сделать вывод логов по ключевому слову: скрипт парсит логи и выводит в консоль только те, которые совпали с аргументом вызова парсера (аналог grep).
 
--Сделать сервис мониторинга доступности устройства с привязкой к «Телеграмм» боту. При запросе с бота будет осуществляться запрос на устройство, по ответу которого будет формироваться статусный ответ.
+* Сделать сервис мониторинга доступности устройства с привязкой к «Телеграмм» боту. При запросе с бота будет осуществляться запрос на устройство, по ответу которого будет формироваться статусный ответ.
 
 Результаты прислать ссылкой в репозиторий.
 ```
@@ -69,15 +69,15 @@ bash__
 git clone git@github.com:Losev-Nikita-space/LNS_Project.git
 cd LNS_Project
 
- __1.2 Создайте виртуальное окружение__
+ 1.2 Создайте виртуальное окружение
 
 python3.10 -m venv venv
 
- __1.3 Активируйте окружение__
+ 1.3 Активируйте окружение
 
 source venv/bin/activate
 
- __1.4 Установите зависимости__
+ 1.4 Установите зависимости
 
 pip install pyyaml pyserial
 ```
@@ -85,32 +85,32 @@ pip install pyyaml pyserial
 __________2. Запуск тестового режима (без установки сервиса)_____________
 ```
 
-___Терминал 1 - Эмулятор устройства:___
-__bash__
+___Терминал 1 - Эмулятор устройства:
+bash
 
 source venv/bin/activate
-__python3.10 udp_server.py --host 127.0.0.1 --port 10000__
+python3.10 udp_server.py --host 127.0.0.1 --port 10000
 
-___Терминал 2 - Монитор устройства:___
+ерминал 2 - Монитор устройства:
 bash
 
 source venv/bin/activate
 
  Тестовый запрос (один раз)
-__sudo python3.10 scripts/device_monitor.py --config config/config.yaml --test__
+sudo python3.10 scripts/device_monitor.py --config config/config.yaml --test
 
  Запуск монитора
-__sudo python3.10 scripts/device_monitor.py --config config/config.yaml__
+sudo python3.10 scripts/device_monitor.py --config config/config.yaml
 ```
 
-------------------------__3. Установка сервиса__-------------------------
+________________________3. Установка сервиса______________________________
 ```
-__bash__
-__Из папки LNS_Project выполните:__
+bash
+Из папки LNS_Project выполните:
 
-_sudo bash scripts/service_install.sh_
+sudo bash scripts/service_install.sh
 
-__Скрипт автоматически:__
+Скрипт автоматически:
 
     -Создаст директории /opt/lns_project/, /etc/lns_project/, /var/log/lns_project/
 
@@ -120,63 +120,64 @@ __Скрипт автоматически:__
 
     -Настроит ротацию логов
 ```
- ------------------------__4.Управление сервисом__-------------------------
+____________________________4.Управление сервисом_____________________________
 ```
 __Запуск/остановка__
 
-__sudo systemctl start lns_project__
-__sudo systemctl stop lns_project__
+sudo systemctl start lns_project
+sudo systemctl stop lns_project
 
-__Проверка статуса__
+Проверка статуса
 
-__sudo systemctl status lns_project__
+sudo systemctl status lns_project
 
-__Просмотр логов__
-__sudo journalctl -u lns_project -f__
-__Скрипты управления__
+Просмотр логов
+sudo journalctl -u lns_project -f
+Скрипты управления
 
-__sudo bash scripts/service_control.sh start__    запуск
-__sudo bash scripts/service_control.sh stop__     остановка
-__sudo bash scripts/service_control.sh status__   статус
-__sudo bash scripts/service_control.sh logs__     логи в реальном времени
-__sudo bash scripts/service_control.sh test__     тестовый запрос
+sudo bash scripts/service_control.sh start   запуск
+sudo bash scripts/service_control.sh stop    остановка
+sudo bash scripts/service_control.sh status  статус
+sudo bash scripts/service_control.sh logs    логи в реальном времени
+sudo bash scripts/service_control.sh test    тестовый запрос
 ```
-------------------------__5.Проверка работы системы__-----------------------------
+____________________________5.Проверка работы системы_____________________________
 ```
-__5.1 Проверка сервиса__
+5.1 Проверка сервиса
 ```
 bash
 
-__Сервис должен быть активен__
-__sudo systemctl status lns_project__
-__✅ Должно быть: Active: active (running)__
+Сервис должен быть активен
+sudo systemctl status lns_project
+✅ Должно быть: Active: active (running)
 ```
-__5.2 Проверка логов__
+5.2 Проверка логов
 ```
 bash
 ```
-__Логи systemd__
+Логи systemd
 ```
-__sudo journalctl -u lns_project -n 10__
+sudo journalctl -u lns_project -n 10
 ```
-__Логи приложения_
+Логи приложения
 ```_
-__ls -la /var/log/lns_project/__
-__tail -f /var/log/lns_project/device_data.json__
+ls -la /var/log/lns_project/
+tail -f /var/log/lns_project/device_data.json
 ```
-__5.3 Проверка данных__
+5.3 Проверка данных
 ```
 bash
 
-__Тестовый запрос, возвращает JSON__
-__sudo bash scripts/service_control.sh test__
+Тестовый запрос, возвращает JSON
+
+sudo bash scripts/service_control.sh test
 ```
 
 
 ```
 -Расположение: scripts/log_grep.py
 ```
-----------__Пример команд:__
+__Пример команд:__
 ```
 ```
 * python3.10 scripts/log_grep.py INFO  Мониторинг работы сервиса
