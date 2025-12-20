@@ -52,6 +52,12 @@ LNS_project/
 │   ├── service_install.sh   Автоматическая установка сервиса на Linux
 │   ├── service_control.sh   Скрипт для администрирования сервиса
 │   └── log_grep.py          Скрипт для парсинга логов
+├── telegram_bot/
+│   ├── __init__.py
+│   ├── config.py           # Конфигурация бота
+│   ├── bot.py              # Основной код бота
+│   ├── install_bot.sh      # Cкрипт установки
+│   └── device_checker.py   # Модуль проверки устройства
 ├── udp_server.py            Эмулятор устройства для тестирования
 ├── requirements.txt         Зависимости Python
 ├── setup.py                 Установка пакета как системного приложения
