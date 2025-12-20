@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-lns_project_bot - Простой бот для проверки устройства LNS
+lns_project_bot - Простой бот для проверки устройства LNS_Project
 Только 2 команды:
 /start - приветствие
 /status - проверить устройство

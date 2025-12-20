@@ -1,5 +1,7 @@
 # Основные зависимости
 pyyaml>=6.0
+pyserial>=3.5
+python-daemon>=2.3.0
 
 # Для systemd сервиса
 python-daemon>=2.3.0

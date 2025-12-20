@@ -201,10 +201,10 @@ ________________6.Парсер логов (log_grep.py)________________
 ```
 #Пример команд из корневой папки проекта:
 
-python3.10 scripts/log_grep.py INFO       #  Мониторинг работы сервиса
-python3.10 scripts/log_grep.py ERROR      #  Проверка на наличие ошибок
-python3.10 scripts/log_grep.py V_12V      #  Анализ данных с устройства
-python3.10 scripts/log_grep.py "22:39"    #  Поиск конкретных временных меток
+sudo python3.10 scripts/log_grep.py INFO       #  Мониторинг работы сервиса
+sudo python3.10 scripts/log_grep.py ERROR      #  Проверка на наличие ошибок
+sudo python3.10 scripts/log_grep.py V_12V      #  Анализ данных с устройства
+sudo python3.10 scripts/log_grep.py "22:39"    #  Поиск конкретных временных меток
 ```
 
 __________________7. Telegram Bot для мониторинга__________________
