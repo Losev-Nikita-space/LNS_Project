@@ -14,16 +14,22 @@ setup(
     },
     
     # Включаем скрипты
-    scripts=['scripts/device_monitor.py', 'udp_server.py','scripts/log_grep.py'],
+    scripts=['scripts/device_monitor.py', 
+            'udp_server.py',
+            'scripts/log_grep.py'
+            'telegram_bot/bot.py'
+            ],
   
     install_requires=[
         'pyserial>=3.5',    
         'pyyaml>=6.0',
+        'python-telegram-bot>=20.0',
     ],
     
     entry_points={
         'console_scripts': [
-            'lns_project=scripts.device_monitor:main',  
+            'lns_project=scripts.device_monitor:main',
+            'lns_project_bot=telegram_bot.bot:main',  
         ],
     },
     

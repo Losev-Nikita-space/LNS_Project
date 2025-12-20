@@ -1,6 +1,6 @@
 #!/usr/bin/env python3.10
 """
-Telegram бот для мониторинга устройства LNS
+Telegram бот для мониторинга устройства
 
 Команды:
 /start - Приветствие
@@ -31,8 +31,8 @@ from telegram.ext import (
 from telegram.constants import ParseMode
 
 # Наши модули
-from .config import BOT_TOKEN, ADMIN_IDS, DEVICE_CONFIG_PATH
-from .device_checker import DeviceChecker
+from telegram_bot.config import BOT_TOKEN, ADMIN_IDS, DEVICE_CONFIG_PATH
+from telegram_bot.device_checker import DeviceChecker
 
 # Настройка логирования
 logging.basicConfig(
@@ -41,7 +41,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Константы для ConversationHandler (если понадобится)
+# Константы для ConversationHandler 
 CHOOSING, TYPING_REPLY, TYPING_CHOICE = range(3)
 
 class LNSBot:
@@ -75,7 +75,7 @@ class LNSBot:
         
         welcome_text = (
             f"👋 Привет, {user.first_name}!\n\n"
-            f"Я бот для мониторинга устройства LNS.\n\n"
+            f"Я бот для мониторинга устройства LNS_Project.\n\n"
             f"📋 Доступные команды:\n"
             f"/start - Приветственное сообщение\n"
             f"/help - Помощь по командам\n"
