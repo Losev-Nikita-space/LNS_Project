@@ -51,7 +51,7 @@ LNS_project/
 │   ├── device_monitor.py    Скрипт мониторинга
 │   ├── service_install.sh   Автоматическая установка сервиса на Linux
 │   ├── service_control.sh   Скрипт для администрирования сервиса
-│   └──
+│   └── log_grep.py          Скрипт для парсинга логов
 ├── udp_server.py            Эмулятор устройства для тестирования
 ├── requirements.txt         Зависимости Python
 ├── setup.py                 Установка пакета как системного приложения
