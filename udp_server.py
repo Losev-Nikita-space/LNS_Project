@@ -25,7 +25,7 @@ class LNSDeviceServer:
         self.socket = None
         self.running = False
         
-        # Статические ответы устройства (можно сделать случайными)
+        # Статические ответы устройства 
         self.responses = {
             'GET_V': 'V_12V',
             'GET_A': 'A_1A', 
