@@ -14,7 +14,7 @@ setup(
     },
     
     # Включаем скрипты
-    scripts=['scripts/device_monitor.py', 'udp_server.py',],
+    scripts=['scripts/device_monitor.py', 'udp_server.py','scripts/log_grep.py'],
   
     install_requires=[
         'pyserial>=3.5',    
