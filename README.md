@@ -168,14 +168,14 @@ bash
 
 __Тестовый запрос, возвращает JSON__
 __sudo bash scripts/service_control.sh test__
-
-
 ```
 
 
 ```
 -Расположение: scripts/log_grep.py
+```
 ----------__Пример команд:__
+```
 python3.10 scripts/log_grep.py INFO  #Мониторинг работы сервиса
 python3.10 scripts/log_grep.py ERROR #Проверка на наличие ошибок
 python3.10 scripts/log_grep.py V_12V #Анализ данных с устройства
